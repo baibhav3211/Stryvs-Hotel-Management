@@ -86,7 +86,6 @@ def confirmBooking(request):
         total_days = request.POST["days"]
         cost = request.POST["amount"]
         payment_ref = request.POST["payment_id"]
-        message = request.POST["message_desk"]
         no_of_rooms = request.POST["rooms_count"]
         #check whether requested rooms available on the days
         start_date = datetime.datetime.strptime(check_in_date, '%Y-%m-%d')
@@ -107,7 +106,7 @@ def confirmBooking(request):
             return redirect('/dashboard')
         obj = RoomBooking.objects.create(user=user,room=room,check_in_date=check_in_date,check_in_time=check_in_time,no_of_rooms=no_of_rooms,
                     check_out_date=check_out_date,check_out_time=check_out_time,date_booked=date_booked,is_cancelled=is_cancelled,
-                    total_days=total_days,cost = cost,payment_ref=payment_ref,message = message)
+                    total_days=total_days,cost = cost,payment_ref=payment_ref)
         start_date = datetime.datetime.strptime(obj.check_in_date, '%Y-%m-%d')
         end_date = datetime.datetime.strptime(obj.check_out_date, '%Y-%m-%d')
         delta = datetime.timedelta(days=1)

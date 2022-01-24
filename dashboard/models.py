@@ -33,4 +33,3 @@ class RoomBooking(models.Model):
     cost = models.IntegerField()
     no_of_rooms = models.IntegerField(default=1)
     payment_ref = models.CharField(max_length=50)
-    message = models.CharField(max_length=500,null=True)
